@@ -16,7 +16,7 @@ load_dotenv()
 
 async def main() -> None:
     bot = Bot(
-        token=os.getenv("TOKEN"),  # Your token here in .env file
+        token=os.getenv("TOKEN"),  # < NOTE: Your token here in .env file >
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
     dp = Dispatcher()

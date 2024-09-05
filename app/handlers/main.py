@@ -6,14 +6,18 @@ from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 
 import app.keyboards as kb
-import app.states._reg_state as st
+import app.utils.logger as log
+
+# import app.states._reg_state as st
 
 router = Router()
 
 
 @router.message(CommandStart())
 async def command_start_handler(message: Message):
-    logging.info(f"User data: {message.chat}")
+    log.push_log(
+        f"User {message.chat.first_name} ({message.chat.id}) starting use bot\nINFO: {message.chat}\n"
+    )
 
     await message.answer(
         f"👋 Привет, <b>{message.from_user.full_name}</b>! Я бот для конвертации текстовых файлов.\n"
